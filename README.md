@@ -1,66 +1,59 @@
-# knowledge-hub-api
+# **🧠 Knowledge Hub API**
 
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
+Uma plataforma inovadora para centralizar, organizar e gamificar o compartilhamento de conhecimento no contexto do futuro do trabalho.
 
-If you want to learn more about Quarkus, please visit its website: <https://quarkus.io/>.
+## **📖 Sobre o Projeto**
 
-## Running the application in dev mode
+O **Knowledge Hub** nasce da necessidade de preparar profissionais para o futuro do trabalho, onde a tecnologia e as relações humanas convergem.
 
-You can run your application in dev mode that enables live coding using:
+**O Problema:** Links úteis, tutoriais e documentos importantes frequentemente se perdem em chats ou anotações pessoais, dificultando o acesso ao conhecimento coletivo.
 
-```shell script
-./mvnw quarkus:dev
-```
+**A Solução:** Uma API RESTful robusta que serve como backend para uma aplicação web onde colaboradores podem:
 
-> **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at <http://localhost:8080/q/dev/>.
+* **Cadastrar** links de vídeos, artigos e cursos.  
+* **Organizar** conteúdos por categorias (Java, IA, Soft Skills).  
+* **Gamificar** o aprendizado: Usuários ganham pontos ao contribuir, subindo de nível (ex: "Especialista em Java").
 
-## Packaging and running the application
+## **🚀 Tecnologias Utilizadas**
 
-The application can be packaged using:
+* **Linguagem:** Java 21 (LTS)  
+* **Framework:** Quarkus (Supersonic Subatomic Java)  
+* **Banco de Dados:** Oracle Database  
+* **Gerenciamento de Dependências:** Maven  
+* **Conteinerização:** Docker  
+* **Deploy:** Render (Cloud)
 
-```shell script
-./mvnw package
-```
+## **🏗 Arquitetura e Design Patterns**
 
-It produces the `quarkus-run.jar` file in the `target/quarkus-app/` directory.
-Be aware that it’s not an _über-jar_ as the dependencies are copied into the `target/quarkus-app/lib/` directory.
+O projeto segue uma arquitetura em camadas baseada no padrão **MVC** (adaptado para API REST), garantindo separação de responsabilidades e facilidade de manutenção:
 
-The application is now runnable using `java -jar target/quarkus-app/quarkus-run.jar`.
+* **Resource (Controller):** Gerencia as requisições HTTP e respostas.  
+* **BO (Business Object):** Contém as regras de negócio e validações.  
+* **DAO (Data Access Object):** Responsável pela persistência e comunicação com o banco de dados (JDBC).  
+* **TO (Transfer Object):** Objetos simples para tráfego de dados entre camadas.  
+* **Singleton/Factory:** Utilizados na gestão da conexão com o banco (ConnectionFactory).
 
-If you want to build an _über-jar_, execute the following command:
+## 
 
-```shell script
-./mvnw package -Dquarkus.package.jar.type=uber-jar
-```
+## **👥 Autores e Créditos**
 
-The application, packaged as an _über-jar_, is now runnable using `java -jar target/*-runner.jar`.
+| Nome | RM |
+| :---- | :---- |
+| **Pedro Mariutti** | RM 75999 |
+| **Henrique Orellana** | RM 565608 |
+| **Anabelle Rosseto** | RM 564526 |
 
-## Creating a native executable
+## 
 
-You can create a native executable using:
+## **🔗 Links Úteis**
 
-```shell script
-./mvnw package -Dnative
-```
+Repositório github java:   [https://github.com/pedromariutti/Global-Solution-2-Java](https://github.com/pedromariutti/Global-Solution-2-Java)
 
-Or, if you don't have GraalVM installed, you can run the native executable build in a container using:
+Repositório github front:  [https://github.com/pedromariutti/Global-Solution-2-Front](https://github.com/pedromariutti/Global-Solution-2-Front) 
 
-```shell script
-./mvnw package -Dnative -Dquarkus.native.container-build=true
-```
+video demonstração: [https://youtu.be/aoMIAwiSpRo](https://youtu.be/aoMIAwiSpRo)
 
-You can then execute your native executable with: `./target/knowledge-hub-api-1.0.0-SNAPSHOT-runner`
+video pitch: [https://youtu.be/UoC0yw2Kg9o](https://youtu.be/UoC0yw2Kg9o)
 
-If you want to learn more about building native executables, please consult <https://quarkus.io/guides/maven-tooling>.
+link aplicação: [https://global-solution-2-front.vercel.app](https://global-solution-2-front.vercel.app)
 
-## Related Guides
-
-- REST Jackson ([guide](https://quarkus.io/guides/rest#json-serialisation)): Jackson serialization support for Quarkus REST. This extension is not compatible with the quarkus-resteasy extension, or any of the extensions that depend on it
-
-## Provided Code
-
-### REST
-
-Easily start your REST Web Services
-
-[Related guide section...](https://quarkus.io/guides/getting-started-reactive#reactive-jax-rs-resources)
