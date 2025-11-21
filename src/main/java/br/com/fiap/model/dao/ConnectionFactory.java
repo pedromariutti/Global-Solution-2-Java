@@ -5,22 +5,21 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionFactory {
-
     public static Connection abrirConexao() {
         Connection con = null;
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
-            // Tenta pegar do ambiente (Deploy), senão usa local (Desenvolvimento)
-            String url = "jdbc:oracle:thin:@oracle.fiap.com.br:1521:ORCL";
-            String user = "rm75999";
-            String pass = "150896";
+            
+            String url = System.getenv("DB_URL") != null ? System.getenv("DB_URL") : "jdbc:oracle:thin:@oracle.fiap.com.br:1521:ORCL";
+            String user = System.getenv("DB_USER") != null ? System.getenv("DB_USER") : "rm75999";
+            String pass = System.getenv("DB_PASS") != null ? System.getenv("DB_PASS") : "150896";
 
             con = DriverManager.getConnection(url, user, pass);
             System.out.println("Conexão aberta.");
         } catch (ClassNotFoundException e) {
-            System.out.println("Driver não encontrado: " + e.getMessage());
+            System.out.println("Erro Driver: " + e.getMessage());
         } catch (SQLException e) {
-            System.out.println("Erro de SQL: " + e.getMessage());
+            System.out.println("Erro SQL: " + e.getMessage());
         }
         return con;
     }
