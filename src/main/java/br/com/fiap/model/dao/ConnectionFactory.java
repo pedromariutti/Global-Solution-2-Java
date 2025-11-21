@@ -9,7 +9,7 @@ public class ConnectionFactory {
         Connection con = null;
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
-            
+
             String url = System.getenv("DB_URL") != null ? System.getenv("DB_URL") : "jdbc:oracle:thin:@oracle.fiap.com.br:1521:ORCL";
             String user = System.getenv("DB_USER") != null ? System.getenv("DB_USER") : "rm75999";
             String pass = System.getenv("DB_PASS") != null ? System.getenv("DB_PASS") : "150896";

@@ -1,6 +1,8 @@
-FROM eclipse-temurin:21-jdk-alpine
+FROM maven:3.9.6-eclipse-temurin-21 AS build
 WORKDIR /app
-COPY . /app
-RUN chmod +x mvnw
-RUN ./mvnw clean package -DskipTests
-CMD ["java", "-jar", "target/quarkus-app/quarkus-run.jar"]
+COPY . .
+RUN mvn clean package -DskipTests
+FROM eclipse-temurin:21-jre-alpine
+WORKDIR /app
+COPY --from=build /app/target/quarkus-app/ .
+CMD ["java", "-jar", "quarkus-run.jar"]
